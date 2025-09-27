@@ -1,0 +1,90 @@
+<html>
+
+<head>
+ 
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quinta Serie - Práctico 13 · Ejercicio 13</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="card">
+    <h2>🏷️ Ejercicio 13: Informe de sumas</h2>
+
+    <div class="instrucciones">
+      <h3>📋 Instrucciones</h3>
+      <p>Este ejercicio recorre los números del <b>1 al 20</b> y calcula:</p>
+      <ul>
+        <li>Suma de números pares</li>
+        <li>Suma de números impares</li>
+        <li>Suma total</li>
+      </ul>
+      <p>Todo en un único <code>for</code>.</p>
+    </div>
+
+   
+    <ul id="listaNumeros" class="lista"></ul>
+
+    <!-- Resultados -->
+    <div id="resultadoPares" class="resultado">Suma de pares: ...</div>
+    <div id="resultadoImpares" class="resultado">Suma de impares: ...</div>
+    <div id="resultadoTotal" class="resultado">Suma total: ...</div>
+
+    <button id="btnEjecutar" class="btn" type="button">¡Generar informe!</button>
+
+    <footer>Curso de JavaScript · Enseñanza Media | Ejercicio 13</footer>
+  </div>
+
+
+  <script>
+    function generarInforme() {
+      let lista = document.getElementById('listaNumeros');
+      let resPares = document.getElementById('resultadoPares');
+      let resImpares = document.getElementById('resultadoImpares');
+      let resTotal = document.getElementById('resultadoTotal');
+
+      
+      lista.innerHTML = "";
+      resPares.innerText = "";
+      resImpares.innerText = "";
+      resTotal.innerText = "";
+
+     
+      let sumaPares = 0;
+      let sumaImpares = 0;
+      let sumaTotal = 0;
+
+      
+      for (let i = 1; i <= 20; i++) {
+        let item = document.createElement('li');
+        item.innerText = "Número: " + i;
+        lista.appendChild(item);
+
+        if (i % 2 === 0) {
+          sumaPares = sumaPares + i;
+          console.log("generarInforme(): i = " + i + " → par; sumaPares = " + sumaPares);
+        } else {
+          sumaImpares = sumaImpares + i;
+          console.log("generarInforme(): i = " + i + " → impar; sumaImpares = " + sumaImpares);
+        }
+
+        sumaTotal = sumaTotal + i;
+      }
+
+      
+      resPares.innerText = "🟢 Suma de pares: " + sumaPares;
+      resImpares.innerText = "🟣 Suma de impares: " + sumaImpares;
+      resTotal.innerText = "🔵 Suma total (1 al 20): " + sumaTotal;
+
+      console.log("generarInforme(): sumas finales → pares=" + sumaPares + ", impares=" + sumaImpares + ", total=" + sumaTotal);
+    }
+
+    
+    let btnEjecutar = document.getElementById('btnEjecutar');
+    btnEjecutar.onclick = generarInforme;
+
+    
+    console.log('Script cargado: botón #btnEjecutar enlazado a generarInforme; listo para ejecutar.');
+  </script>
+</body>
+</html>
